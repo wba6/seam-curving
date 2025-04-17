@@ -38,7 +38,7 @@ This repository implements an object‑oriented seam carving utility in C++ for 
    premake5 vs2022
 
    # For GNU Make (Linux):
-   premake5 gmake2
+   premake5 gmake
 
    # For Xcode (macOS):
    premake5 xcode4
@@ -85,7 +85,7 @@ This project supports GitHub Codespaces for a fully configured cloud dev environ
    - `premake5`
 3. Inside the Codespace terminal, run:
    ```bash
-   premake5 gmake2
+   premake5 gmake
    make config=release
    ```
 4. The compiled binary is located at `bin/release/seam_carving`.
