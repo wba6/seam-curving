@@ -28,7 +28,7 @@ This repository implements an object‑oriented seam carving utility in C++ for 
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/<your‑org>/seam-carving.git
+   git clone https://github.com/wba6/seam-carving.git
    cd seam‑carving
    ```
 
