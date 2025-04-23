@@ -15,22 +15,22 @@ Image::Image(const std::string& filename) {
     std::ifstream in(filename);
     if (!in) throw std::runtime_error("Cannot open input file");
 
-    // Read magic number
+    // Read number
     std::string magic;
     in >> magic;
     if (magic != "P2") throw std::runtime_error("Invalid PGM magic (expected 'P2')");
 
-    // Consume remainder of magic line
+    // Consume remainder of line
     std::string line;
     std::getline(in, line);
 
-    // Capture any comment lines (preserve exact text)
+    // Capture any comment lines 
     while (in.peek() == '#') {
         std::getline(in, line);
         comments_.push_back(line);
     }
 
-    // Read dimensions and max gray value
+    // Read dimensions and gray value
     in >> width_ >> height_ >> maxValue_;
     if (width_ <= 0 || height_ <= 0 || maxValue_ <= 0) {
         throw std::runtime_error("Invalid image dimensions or max gray value");
@@ -48,7 +48,7 @@ Image::Image(const std::string& filename) {
 }
 
 /**
- * @brief Write image to a P2 PGM, re-emitting preserved comments and matching whitespace.
+ * @brief Write image to a P2 PGM, preserved comments and matching whitespace.
  * @param filename Path to output file.
  * @throws runtime_error on I/O error.
  */
@@ -56,7 +56,6 @@ void Image::write(const std::string& filename) const {
     std::ofstream out(filename);
     if (!out) throw std::runtime_error("Cannot open output file");
 
-    // Magic
     out << "P2\n";
     // Original comments
     for (const auto& c : comments_) {
@@ -66,7 +65,7 @@ void Image::write(const std::string& filename) const {
     out << width_ << " " << height_ << "\n";
     out << maxValue_ << "\n";
 
-    // Pixel rows: include trailing space on each line
+    // Pixel rows, and trailing space on each line
     for (int i = 0; i < height_; ++i) {
         for (int j = 0; j < width_; ++j) {
             out << pixels_[i][j] << ' ';

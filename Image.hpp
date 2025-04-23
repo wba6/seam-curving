@@ -26,7 +26,7 @@ public:
     explicit Image(const std::string& filename); 
 
     /**
-     * @brief Write image to a P2 PGM, re-emitting preserved comments and matching whitespace.
+     * @brief Write image to a P2 PGM, presvers comments and matching whitespace.
      * @param filename Path to output file.
      * @throws runtime_error on I/O error.
      */
