@@ -11,11 +11,11 @@
  */
 class Image {
 private:
-    int width_;                             ///< number of columns
-    int height_;                            ///< number of rows
-    int maxValue_;                          ///< maximum gray value
-    std::vector<std::string> comments_;     ///< header comment lines (with '#')
-    std::vector<std::vector<int>> pixels_;  ///< pixel data [row][col]
+    int width_;                             // number of columns
+    int height_;                            // number of rows
+    int maxValue_;                          // maximum gray value
+    std::vector<std::string> comments_;     // header comment lines (with '#')
+    std::vector<std::vector<int>> pixels_;  // pixel data [row][col]
 
 public:
     /**
