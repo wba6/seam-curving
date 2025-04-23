@@ -16,12 +16,12 @@ private:
     Image image_;
 
     /**
-     * @brief Compute energy map (gradient magnitude).
+     * @brief Compute energy map 
      */
     std::vector<std::vector<int>> computeEnergy() const; 
 
     /**
-     * @brief Find min-energy vertical seam via DP (leftmost tie-break).
+     * @brief Find min-energy vertical seam 
      */
     std::vector<int> findVerticalSeam(const std::vector<std::vector<int>>& energy) const; 
 

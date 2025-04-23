@@ -6,7 +6,7 @@
 #include "SeamCarver.hpp"
 
 /**
- * @brief Compute energy map (gradient magnitude).
+ * @brief Compute energy map 
  */
 std::vector<std::vector<int>> SeamCarver::computeEnergy() const {
     int h = image_.getHeight();
@@ -27,7 +27,7 @@ std::vector<std::vector<int>> SeamCarver::computeEnergy() const {
 }
 
 /**
- * @brief Find min-energy vertical seam via DP (leftmost tie-break).
+ * @brief Find min-energy vertical seam 
  */
 std::vector<int> SeamCarver::findVerticalSeam(const std::vector<std::vector<int>>& energy) const {
     int h = energy.size();
