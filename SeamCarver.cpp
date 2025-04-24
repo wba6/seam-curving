@@ -9,21 +9,21 @@
  * @brief Compute energy map 
  */
 std::vector<std::vector<int>> SeamCarver::computeEnergy() const {
-    int h = image_.getHeight();
-    int w = image_.getWidth();
-    std::vector<std::vector<int>> energy(h, std::vector<int>(w));
+   int h = image_.getHeight(), w = image_.getWidth();
+    std::vector<std::vector<int>> E(h, std::vector<int>(w));
     for (int i = 0; i < h; ++i) {
         for (int j = 0; j < w; ++j) {
-            int val = image_.getPixel(i, j);
-            int e = 0;
-            if (i > 0)   e += abs(val - image_.getPixel(i - 1, j));
-            if (i < h - 1) e += abs(val - image_.getPixel(i + 1, j));
-            if (j > 0)   e += abs(val - image_.getPixel(i, j - 1));
-            if (j < w - 1) e += abs(val - image_.getPixel(i, j + 1));
-            energy[i][j] = e;
+            int sum = 0;
+            // for grayscale or average
+            int v = image_.grayValue(i, j);
+            if (i > 0)   sum += std::abs(v - image_.grayValue(i - 1, j));
+            if (i < h-1) sum += std::abs(v - image_.grayValue(i + 1, j));
+            if (j > 0)   sum += std::abs(v - image_.grayValue(i, j - 1));
+            if (j < w-1) sum += std::abs(v - image_.grayValue(i, j + 1));
+            E[i][j] = sum;
         }
     }
-    return energy;
+    return E;
 }
 
 /**

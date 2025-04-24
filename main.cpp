@@ -36,9 +36,10 @@ int main(int argc, char* argv[]) {
         auto res = sc.getResult();
 
         auto pos = infile.find_last_of('.');
-        std::string base = pos == std::string::npos ? infile : infile.substr(0, pos);
+        std::string base = (pos==std::string::npos ? infile : infile.substr(0,pos));
+        std::string ext  = (pos==std::string::npos ? ".pgm" : infile.substr(pos));
         std::string outfile = base + "_processed_" + std::to_string(numV)
-                            + "_" + std::to_string(numH) + ".pgm";
+                            + "_" + std::to_string(numH) + ext;
         res.write(outfile);
         std::cout << "Saved: " << outfile << "\n";
     } catch (const std::exception& e) {

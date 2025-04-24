@@ -7,15 +7,15 @@
 
 /**
  * @class Image
- * @brief Represents a grayscale PGM (P2) image, preserving comments.
+ * @brief Represents a image, preserving comments.
  */
 class Image {
 private:
-    int width_;                             // number of columns
-    int height_;                            // number of rows
-    int maxValue_;                          // maximum gray value
-    std::vector<std::string> comments_;     // header comment lines (with '#')
-    std::vector<std::vector<int>> pixels_;  // pixel data [row][col]
+    int width_, height_, maxValue_;
+    bool isColor_;
+    std::vector<std::string> comments_;
+    std::vector<std::vector<int>> gray_;                           // grayscale pixels
+    std::vector<std::vector<std::array<int,3>>> color_;             // color pixels [row][col]
 
 public:
     /**
@@ -37,6 +37,13 @@ public:
 
     /** @brief Get image height. */
     int getHeight() const;
+
+    bool isColor()  const;
+
+    /**
+     * @brief Access grayscale pixel (if P2) or convert color to gray via average (for energy).
+     */
+    int grayValue(int r, int c) const;
 
     /**
      * @brief Access pixel at (row, col).
