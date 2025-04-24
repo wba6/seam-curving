@@ -8,6 +8,7 @@
  */
 
 #include <string>
+#include <array>
 #include <iostream>
 #include <cstdlib>
 #include "Image.hpp"
